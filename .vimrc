@@ -19,7 +19,7 @@ let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:5,results:5'
 let g:ctrlp_switch_buffer = 'ET' " Jump to open buffer if possible
 let g:ctrlp_root_markers = ['package.json', '.git']
 let g:ctrlp_custom_ignore = {
- \ 'dir': 'node_modules\|bower_components\|log\|vendor\|public\/system\|tmp\|dist',
+ \ 'dir': 'node_modules\|bower_components\|log\|vendor\|public\/system\|tmp\|dist\|coverage',
  \ }
 
 if has("vms")
@@ -160,7 +160,7 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline_distinguished = 1
 
 ""Vim-move
-let g:move_key_modifier = 'C'
+"" let g:move_key_modifier = 'C'
 
 ""Show filename
 set statusline=%f ""%f is relative path, %F is absolute
@@ -198,7 +198,8 @@ autocmd BufWinLeave * call clearmatches()
 let g:vim_markdown_folding_disabled=1
 let g:vim_markdown_fenced_languages = ['js=javascript']
 
-let g:ale_fixers = {'javascript': ['prettier', 'eslint']}
+let g:ale_fixers = {'javascript': ['prettier']}
+let g:ale_javascript_prettier_use_local_config = 1
 let g:ale_fix_on_save=1
 
 call plug#begin('~/.vim/plugged')
