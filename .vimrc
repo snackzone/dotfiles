@@ -14,7 +14,7 @@ set modelines=0
 set backspace=indent,eol,start
 
 " CTRL+P
-set runtimepath^=~/.vim/bundle/ctrlp.vim
+set runtimepath^=~/.vim/plugged/ctrlp.vim
 let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:5,results:5'
 let g:ctrlp_switch_buffer = 'ET' " Jump to open buffer if possible
 let g:ctrlp_root_markers = ['package.json', '.git']
@@ -219,6 +219,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'junegunn/goyo.vim'
 Plug 'kien/ctrlp.vim'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'mattn/emmet-vim'
 
 " Asynchronous Linting Engine
 Plug 'w0rp/ale'
