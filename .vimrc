@@ -88,6 +88,19 @@ vnoremap <tab> %
 
 set showmatch  "Weird parentheses highlighting
 
+"" // Searches for selected text
+" Search for selected text, forwards or backwards.
+vnoremap <silent> * :<C-U>
+  \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
+  \gvy/<C-R><C-R>=substitute(
+  \escape(@", '/\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
+  \gV:call setreg('"', old_reg, old_regtype)<CR>
+vnoremap <silent> # :<C-U>
+  \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
+  \gvy?<C-R><C-R>=substitute(
+  \escape(@", '?\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
+  \gV:call setreg('"', old_reg, old_regtype)<CR>
+
 "" External clipboard register
 nnoremap <leader>c "*
 vnoremap <leader>c "*
@@ -124,6 +137,13 @@ nmap <leader>o :BufOnly<CR>
 "" Move vertically across visual lines, not actual lines
 nnoremap j gj
 nnoremap k gk
+
+" sets the working directory to whatever file is being edited
+" set autochdir
+
+" command to set local pwd to path of file being currently edited
+nnoremap <Leader>cd :lcd %:p:h<CR>:pwd<CR>
+
 
 " edit file in current low level directory
 nnoremap <Leader>e :e <C-R>=expand('%:p:h') . '/'<CR>
@@ -169,14 +189,30 @@ set statusline=%f ""%f is relative path, %F is absolute
 nnoremap <S-tab> :NERDTreeToggle <Enter>
 
 ""Ale
+augroup FiletypeGroup
+    autocmd!
+    au BufNewFile,BufRead *.jsx set filetype=javascript.jsx
+augroup END
+
 let g:ale_lint_on_text_changed = 'normal'
 let g:ale_lint_on_insert_leave = 1
 let g:ale_linters = {
       \  'html': [],
       \  'javascript': ['eslint'],
+      \  'jsx': ['eslint'],
+      \  'typescript': ['tslint'],
       \  'ruby': ['ruby'],
       \  'eruby': []
       \}
+
+let g:ale_fixers = {
+      \ 'javascript': ['prettier'],
+      \ 'jsx': ['prettier'],
+      \ 'typescript': ['prettier']
+      \}
+
+let g:ale_javascript_prettier_use_local_config = 1
+let g:ale_fix_on_save=1
 
 ""SyntaxComplete
 if has("autocmd") && exists("+omnifunc")
@@ -198,10 +234,6 @@ autocmd BufWinLeave * call clearmatches()
 let g:vim_markdown_folding_disabled=1
 let g:vim_markdown_fenced_languages = ['js=javascript']
 
-let g:ale_fixers = {'javascript': ['prettier']}
-let g:ale_javascript_prettier_use_local_config = 1
-let g:ale_fix_on_save=1
-
 call plug#begin('~/.vim/plugged')
 " must use single-quotes in this section
 
@@ -220,6 +252,8 @@ Plug 'junegunn/goyo.vim'
 Plug 'kien/ctrlp.vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'mattn/emmet-vim'
+Plug 'posva/vim-vue'
+Plug 'leafgarland/typescript-vim'
 
 " Asynchronous Linting Engine
 Plug 'w0rp/ale'
