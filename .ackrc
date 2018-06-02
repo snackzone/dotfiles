@@ -1,0 +1,33 @@
+#Always sort the files
+#--sort−files
+
+--ignore-dir=.idea/
+--ignore-dir=node_modules/
+--ignore-dir=coverage_*/
+--ignore-dir=bower_components/
+--ignore-dir=log/
+--ignore-dir=vendor/
+--ignore-dir=public/system/
+--ignore-dir=tmp/
+--ignore-dir=dist/
+--ignore-dir=build/
+--ignore-file=is:yarn.lock
+--ignore-file=is:package-lock.json
+
+#make sure ack knows how to search common filetypes used in rails projects
+--type-add=css=scss
+--type-add=ruby=.haml,.ru,.lock
+--type-set=coffeescript=.coffee
+--type-set=coffee=.coffee
+
+#make sure ack knows how to search common filetypes used in node.js projects
+--type-set=coffee=.coffee
+--type-set=jade=.jade
+--type-set=feature=.feature
+--type-set=json=.json
+--type-set=hbs=.hbs
+--type-set=haml=.haml
+--type-set=orig=.orig
+--type-set=yml=.yml
+
+--ignore-dir=coverage/
