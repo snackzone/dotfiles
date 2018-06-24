@@ -174,10 +174,14 @@ syntax on
 filetype plugin indent on
 set t_Co=256
 set background=dark
-colorscheme distinguished
+
+if filereadable(expand("~/.vimrc_background"))
+  let base16colorspace=256
+  source ~/.vimrc_background
+endif
+
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
-let g:airline_distinguished = 1
 
 ""Vim-move
 "" let g:move_key_modifier = 'C'
@@ -238,9 +242,8 @@ call plug#begin('~/.vim/plugged')
 " must use single-quotes in this section
 
 Plug 'mileszs/ack.vim'
-Plug 'flazz/vim-colorschemes'
+Plug 'chriskempson/base16-vim'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-Plug 'felixhummel/setcolors.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'kchmck/vim-coffee-script'
