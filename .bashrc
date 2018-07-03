@@ -21,13 +21,14 @@ alias eclear="rm -rf node_modules && rm -rf tmp && rm -rf dist && npm cache clea
 alias ereset="eclear && yarn"
 alias clearbranches="git branch | grep -v \"master\" | xargs git branch -D"
 alias td="tmux detach"
+alias dotfiles="cd ~/dotfiles"
 
 openMatchedFiles() {
-  vim $(ack $@ -l)
+  vim `ack $@ -l`
 }
 
 openGitDiff() {
-  vim $(git diff --name-only HEAD)
+  vim `git ls-files -m`
 }
 
 alias vimack="openMatchedFiles"
