@@ -1,32 +1,4 @@
-alias ink="cd ~/movableink"
-alias bower="bower install"
-alias canvas="ink && cd canvas/packages/canvas"
-alias custom="ink && cd cartridges"
-alias cust="custom"
-alias apps="ink && cd studio-apps/apps"
-alias app="ink && cd studio-app"
-alias cart="custom"
-alias sorc="ink && cd sorcerer"
-alias can="canvas"
-alias work="ink && cd studio-framework"
-alias kep="cd ~/khepri"
-alias kepri="kep && ember electron"
 alias downloads="cd ~/Downloads"
-alias hem="ink && cd hemingway"
-alias mi="ink && cd movableink"
-alias ojos="ink && cd ojos"
-alias oj="ojos"
-alias prom="cd ~/promiscuous"
-alias capturama="ink && cd capturama"
-alias templates="ink && cd templates"
-alias trillian="ink && cd canvas/packages/trillian"
-alias tril="trillian"
-alias hog="ink && cd canvas/packages/hogwarts"
-alias prov="ink && cd provisioning"
-alias fluid="ink && cd canvas/packages/fluid"
-alias util="ink && cd studio-utility"
-alias uatu="ink && cd canvas/packages/uatu"
-alias ua="uatu"
 alias ~="cd ~"
 alias ga="git add -A"
 alias gs="git status"
@@ -45,15 +17,21 @@ alias .bash_profile="vim ~/.bash_profile"
 alias .bashrc="vim ~/.bashrc"
 alias sshadd="ssh-add"
 alias cleartmp="rm ~/tmp/*"
-alias yb="yarn && bower install"
-alias eclear="rm -rf node_modules && rm -rf bower_components && rm -rf tmp && rm -rf dist && npm cache clean --force && bower cache clean"
-alias ereset="eclear && yarn && bower install"
+alias eclear="rm -rf node_modules && rm -rf tmp && rm -rf dist && npm cache clean --force && bower cache clean"
+alias ereset="eclear && yarn"
 alias clearbranches="git branch | grep -v \"master\" | xargs git branch -D"
-alias binpush="/usr/local/bin/push-dev-cartridge"
-alias testpush="~/testpush.sh"
 alias td="tmux detach"
-alias MI="tmux attach -t MI"
-alias WORK="tmux attach -t WORK"
+
+openMatchedFiles() {
+  vim $(ack $@ -l)
+}
+
+openGitDiff() {
+  vim $(git diff --name-only HEAD)
+}
+
+alias vimack="openMatchedFiles"
+alias vimdiff="openGitDiff"
 
 # base16 stuff
 BASE16_SHELL=$HOME/.config/base16-shell/
