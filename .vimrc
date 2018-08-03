@@ -271,4 +271,7 @@ Plug 'othree/yajs.vim'
 " For ES7 features
 Plug 'othree/es.next.syntax.vim'
 
+" JSX
+Plug 'mxw/vim-jsx'
+
 call plug#end()
