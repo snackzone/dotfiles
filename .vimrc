@@ -183,30 +183,27 @@ endif
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 
-""Vim-move
-"" let g:move_key_modifier = 'C'
-
 ""Show filename
 set statusline=%f ""%f is relative path, %F is absolute
 
 ""NERDTree
 nnoremap <S-tab> :NERDTreeToggle <Enter>
 
-""Ale
-augroup FiletypeGroup
-    autocmd!
-    au BufNewFile,BufRead *.jsx set filetype=javascript.jsx
-augroup END
+let g:jsx_ext_required = 0
 
+""Ale
 let g:ale_lint_on_text_changed = 'normal'
 let g:ale_lint_on_insert_leave = 1
+let g:ale_lint_on_save = 1
+
 let g:ale_linters = {
       \  'html': [],
       \  'javascript': ['eslint'],
       \  'jsx': ['eslint'],
-      \  'typescript': ['tslint'],
+      \  'typescript': ['tslint', 'eslint'],
       \  'ruby': ['ruby'],
-      \  'eruby': []
+      \  'eruby': [],
+      \  'handlebars': ['ember-template-lint']
       \}
 
 let g:ale_fixers = {
@@ -217,6 +214,8 @@ let g:ale_fixers = {
 
 let g:ale_javascript_prettier_use_local_config = 1
 let g:ale_fix_on_save=1
+
+let g:ale_linter_aliases = {'typescript.tsx': 'typescript'}
 
 ""SyntaxComplete
 if has("autocmd") && exists("+omnifunc")
@@ -238,6 +237,9 @@ autocmd BufWinLeave * call clearmatches()
 let g:vim_markdown_folding_disabled=1
 let g:vim_markdown_fenced_languages = ['js=javascript']
 
+let vim_markdown_preview_github=1
+let vim_markdown_preview_hotkey='<C-m>'
+
 call plug#begin('~/.vim/plugged')
 " must use single-quotes in this section
 
@@ -246,32 +248,31 @@ Plug 'chriskempson/base16-vim'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'kchmck/vim-coffee-script'
 Plug 'airblade/vim-gitgutter'
-Plug 'matze/vim-move'
 Plug 'tpope/vim-fugitive'
-Plug 'pangloss/vim-javascript'
-Plug 'junegunn/goyo.vim'
 Plug 'kien/ctrlp.vim'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'mattn/emmet-vim'
-Plug 'posva/vim-vue'
-Plug 'leafgarland/typescript-vim'
 
-" Asynchronous Linting Engine
+Plug 'posva/vim-vue'
+Plug 'kchmck/vim-coffee-script'
+
+
 Plug 'w0rp/ale'
 
 " Markdown stuff
-Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
+Plug 'JamshedVesuna/vim-markdown-preview'
 
-" Yet Another JavaScript Syntax
-Plug 'othree/yajs.vim'
+Plug 'pangloss/vim-javascript'
 
 " For ES7 features
 Plug 'othree/es.next.syntax.vim'
 
-" JSX
+" JSX Syntax highlighting
 Plug 'mxw/vim-jsx'
+Plug 'peitalin/vim-jsx-typescript'
+
+Plug 'leafgarland/typescript-vim'
+Plug 'ianks/vim-tsx'
 
 call plug#end()
