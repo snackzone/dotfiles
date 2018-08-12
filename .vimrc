@@ -189,8 +189,6 @@ set statusline=%f ""%f is relative path, %F is absolute
 ""NERDTree
 nnoremap <S-tab> :NERDTreeToggle <Enter>
 
-let g:jsx_ext_required = 0
-
 ""Ale
 let g:ale_lint_on_text_changed = 'normal'
 let g:ale_lint_on_insert_leave = 1
@@ -237,8 +235,8 @@ autocmd BufWinLeave * call clearmatches()
 let g:vim_markdown_folding_disabled=1
 let g:vim_markdown_fenced_languages = ['js=javascript']
 
-let vim_markdown_preview_github=1
-let vim_markdown_preview_hotkey='<C-m>'
+" add jbuilder syntax highlighting
+au BufNewFile,BufRead *.json.jbuilder set ft=ruby
 
 call plug#begin('~/.vim/plugged')
 " must use single-quotes in this section
