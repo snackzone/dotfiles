@@ -4,16 +4,20 @@ let &packpath = &runtimepath
 call plug#begin('~/.vim/plugged')
 " must use single-quotes in this section
 
-Plug 'chriskempson/base16-vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
+
+Plug 'chriskempson/base16-vim'
+
+Plug 'editorconfig/editorconfig-vim'
+Plug 'Chiel92/vim-autoformat'
+Plug 'wincent/terminus'
 Plug 'christoomey/vim-tmux-navigator'
+
 Plug 'mattn/emmet-vim'
 Plug 'jiangmiao/auto-pairs'
+
 Plug 'sheerun/vim-polyglot'
-Plug 'editorconfig/editorconfig-vim'
-Plug 'wincent/terminus'
-Plug 'Chiel92/vim-autoformat'
 
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
@@ -163,4 +167,3 @@ endif
 
 " add jbuilder syntax highlighting
 au BufNewFile,BufRead *.json.jbuilder set ft=ruby
-
