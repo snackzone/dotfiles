@@ -37,26 +37,26 @@ Plug 'Yggdroot/indentLine'
 Plug 'w0rp/ale'
   let g:ale_lint_on_text_changed = 'normal'
   let g:ale_lint_on_insert_leave = 1
+
   let g:ale_linters = {
-        \  'javascript': ['eslint'],
-        \  'jsx': ['eslint'],
-        \  'typescript': ['tslint'],
-        \  'ruby': ['ruby'],
-        \  'eruby': []
+        \ 'typescript': ['tslint', 'tsserver', 'typecheck'],
+        \ 'typescriptreact': ['tslint', 'tsserver', 'typecheck'],
         \}
 
   let g:ale_fixers = {
         \ 'javascript': ['prettier'],
         \ 'jsx': ['prettier'],
-        \ 'typescript': ['prettier']
+        \ 'typescript': ['prettier'],
+        \ 'typescriptreact': ['prettier']
         \}
 
-  let g:ale_javascript_prettier_use_local_config = 1
+  let g:ale_linter_aliases = { 'typescriptreact': 'typescript' }
   let g:ale_fix_on_save=1
 
 Plug 'othree/yajs.vim'
 Plug 'othree/es.next.syntax.vim'
 Plug 'HerringtonDarkholme/yats.vim'
+Plug 'ianks/vim-tsx'
 Plug 'mhartington/nvim-typescript', { 'do': './install.sh' }
 
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
