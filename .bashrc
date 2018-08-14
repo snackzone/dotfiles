@@ -27,8 +27,10 @@ alias vi="nvim"
 alias ack="ag"
 alias ag="ag --path-to-ignore ~/.ignore"
 
+export FZF_DEFAULT_COMMAND="ag --hidden --ignore .git -g \"\""
+
 openMatchedFiles() {
-  vim `ack $@ -l`
+  vim `ag $@ -l`
 }
 
 openGitDiff() {

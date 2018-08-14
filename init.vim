@@ -57,11 +57,15 @@ Plug 'othree/yajs.vim'
 Plug 'othree/es.next.syntax.vim'
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'ianks/vim-tsx'
-Plug 'mhartington/nvim-typescript', { 'do': './install.sh' }
 
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-  let g:deoplete#file#enable_buffer_path = 1
-  let g:deoplete#enable_at_startup = 1
+if has('nvim')
+  Plug 'mhartington/nvim-typescript', { 'do': './install.sh' }
+    let g:nvim_typescript#diagnosticsEnable = 0
+
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+    let g:deoplete#file#enable_buffer_path = 1
+    let g:deoplete#enable_at_startup = 1
+endif
 
 call plug#end()
 
