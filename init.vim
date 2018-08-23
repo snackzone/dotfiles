@@ -58,6 +58,8 @@ Plug 'othree/es.next.syntax.vim'
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'ianks/vim-tsx'
 
+Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+
 if has('nvim')
   Plug 'mhartington/nvim-typescript', { 'do': './install.sh' }
     let g:nvim_typescript#diagnosticsEnable = 0
